@@ -5,22 +5,22 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "financial_advisor")
 public class Advisor {
 
     @Id
     @GeneratedValue()
+    @Column(name = "advisor_id")
     private long advisorId;
 
-    @Column(nullable = false)
+    @Column(name = "first_name", nullable = false)
     private String firstName;
 
-    @Column(nullable = false)
+    @Column(name = "last_name", nullable = false)
     private String lastName;
-
-    @Column(nullable = false)
-    private String address;
 
     @Column(nullable = false)
     private String phone;
@@ -32,12 +32,11 @@ public class Advisor {
 
     }
 
-    public Advisor(String firstName, String lastName, String address, String phone, String email) {
+    public Advisor(String firstName, String lastName, String email, String phone) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.address = address;
-        this.phone = phone;
         this.email = email;
+        this.phone = phone;
     }
 
     public Long getAdvisorId() {
@@ -58,14 +57,6 @@ public class Advisor {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
     }
 
     public String getPhone() {
